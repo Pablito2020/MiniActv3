@@ -18,7 +18,11 @@ class MainActivity : AppCompatActivity() {
     fun setUpButtonComponents() {
         binding.callButton.setOnClickListener {
             val caller = Caller(this)
-            caller.call()
+            caller.execute()
+        }
+        binding.contactsButton.setOnClickListener {
+            val contacts = ContactsOpener(this)
+            contacts.execute()
         }
     }
 

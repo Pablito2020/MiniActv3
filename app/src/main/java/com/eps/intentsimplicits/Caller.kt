@@ -8,16 +8,20 @@ import android.net.Uri
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.requestPermissions
 
-class Caller(private val activity: Activity) {
+class Caller(activity: Activity) : IntentExecutioner(activity) {
 
-    fun call() {
-        if (!hasPermissions())
-            permissionsRequest()
-        else
-            callPhone()
+    override fun hasPermissions(): Boolean {
+        return ActivityCompat.checkSelfPermission(
+            activity.applicationContext,
+            Manifest.permission.CALL_PHONE
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun callPhone() {
+    override fun requestPermissions() {
+        requestPermissions(activity, arrayOf(Manifest.permission.CALL_PHONE), 0)
+    }
+
+    override fun action() {
         val uri = getPhoneFromActivity()
         val intent = Intent(Intent.ACTION_CALL, uri)
         activity.startActivity(intent)
@@ -26,16 +30,6 @@ class Caller(private val activity: Activity) {
     private fun getPhoneFromActivity(): Uri {
         val phone = activity.getText(R.string.telephone)
         return Uri.parse("tel: $phone")
-    }
-
-    private fun permissionsRequest() =
-        requestPermissions(activity, arrayOf(Manifest.permission.CALL_PHONE), 0)
-
-    private fun hasPermissions(): Boolean {
-        return ActivityCompat.checkSelfPermission(
-            activity.applicationContext,
-            Manifest.permission.CALL_PHONE
-        ) == PackageManager.PERMISSION_GRANTED
     }
 
 }
