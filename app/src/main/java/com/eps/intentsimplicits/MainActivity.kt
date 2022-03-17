@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.eps.intentsimplicits.databinding.ActivityMainBinding
 import com.eps.intentsimplicits.intents.types.Caller
 import com.eps.intentsimplicits.intents.types.ContactsOpener
+import com.eps.intentsimplicits.intents.types.LocateAddress
 import com.eps.intentsimplicits.intents.types.LocateCoordinates
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         binding.coordinatesButton.setOnClickListener {
             val locate = LocateCoordinates(this)
             locate.execute()
+        }
+        binding.directionButton.setOnClickListener {
+            val locateAddress = LocateAddress(this)
+            locateAddress.execute()
         }
     }
 

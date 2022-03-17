@@ -13,4 +13,5 @@
     <string name="telephone">973666666</string>
     <string name="lat">41.60788</string>
     <string name="lon">0.623333</string>
+    <string name="address">Carrer de Jaume II, 69, Lleida</string>
 </resources>
