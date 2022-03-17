@@ -17,4 +17,8 @@ class CallerPermissionRequest(private val activity: Activity) : PermissionReques
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+    override fun getRequest(): String {
+        return Manifest.permission.CALL_PHONE
+    }
+
 }

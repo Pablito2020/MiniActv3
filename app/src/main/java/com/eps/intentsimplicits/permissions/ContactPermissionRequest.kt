@@ -15,4 +15,8 @@ class ContactPermissionRequest(private val activity: Activity) : PermissionReque
         Manifest.permission.READ_CONTACTS
     ) == PackageManager.PERMISSION_GRANTED
 
+    override fun getRequest(): String {
+        return Manifest.permission.READ_CONTACTS
+    }
+
 }

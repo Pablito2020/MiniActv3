@@ -20,9 +20,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setUpPermissionRequesters()
+        setUpButtonOnClick()
+        checkPermissions()
+    }
+
+    private fun setUpPermissionRequesters() {
         callRequester = CallerPermissionRequest(this)
         contactsRequester = ContactPermissionRequest(this)
-        setUpButtonOnClick()
+    }
+
+    private fun checkPermissions() {
+        requestPermissions(
+            arrayOf(
+                callRequester.getRequest(),
+                contactsRequester.getRequest()
+            ), 0
+        )
     }
 
     private fun setUpButtonOnClick() {
@@ -42,7 +56,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.directionButton.id -> LocateAddress(this)
         binding.urlButton.id -> WebOpener(this)
         binding.googleButton.id -> GoogleSearcher(this)
-        else -> throw IllegalArgumentException("Unsupported button")
+        else -> throw IllegalArgumentException("Not implemented button")
     }
 
     override fun onClick(p0: View?) {
