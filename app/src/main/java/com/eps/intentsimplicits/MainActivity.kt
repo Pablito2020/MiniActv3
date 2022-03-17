@@ -6,15 +6,22 @@ import androidx.appcompat.app.AppCompatActivity
 import com.eps.intentsimplicits.databinding.ActivityMainBinding
 import com.eps.intentsimplicits.intents.Command
 import com.eps.intentsimplicits.intents.types.*
+import com.eps.intentsimplicits.permissions.CallerPermissionRequest
+import com.eps.intentsimplicits.permissions.ContactPermissionRequest
+import com.eps.intentsimplicits.permissions.PermissionRequester
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var callRequester: PermissionRequester
+    private lateinit var contactsRequester: PermissionRequester
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        callRequester = CallerPermissionRequest(this)
+        contactsRequester = ContactPermissionRequest(this)
         setUpButtonOnClick()
     }
 
@@ -29,8 +36,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
-        binding.callButton.id -> Caller(this)
-        binding.contactsButton.id -> ContactsOpener(this)
+        binding.callButton.id -> Caller(callRequester, this)
+        binding.contactsButton.id -> ContactsOpener(contactsRequester, this)
         binding.coordinatesButton.id -> LocateCoordinates(this)
         binding.directionButton.id -> LocateAddress(this)
         binding.urlButton.id -> WebOpener(this)

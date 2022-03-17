@@ -1,18 +1,18 @@
 package com.eps.intentsimplicits.intents
 
 import android.app.Activity
+import com.eps.intentsimplicits.permissions.PermissionRequester
 
-abstract class PermissionCommand(internal val activity: Activity) : Command {
+abstract class PermissionCommand(requester: PermissionRequester, internal val activity: Activity) :
+    Command {
 
-    abstract fun hasPermissions(): Boolean
-
-    abstract fun requestPermissions()
+    protected val permissionRequester = requester
 
     abstract fun action()
 
     override fun execute() {
-        if (!hasPermissions())
-            requestPermissions()
+        if (!permissionRequester.hasPermissions())
+            permissionRequester.requestPermission()
         else
             action()
     }
