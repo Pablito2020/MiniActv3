@@ -5,10 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.eps.intentsimplicits.databinding.ActivityMainBinding
 import com.eps.intentsimplicits.intents.Command
-import com.eps.intentsimplicits.intents.types.Caller
-import com.eps.intentsimplicits.intents.types.ContactsOpener
-import com.eps.intentsimplicits.intents.types.LocateAddress
-import com.eps.intentsimplicits.intents.types.LocateCoordinates
+import com.eps.intentsimplicits.intents.types.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -20,11 +17,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
     }
 
-    fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
+    private fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
         binding.callButton.id -> Caller(this)
         binding.contactsButton.id -> ContactsOpener(this)
         binding.coordinatesButton.id -> LocateCoordinates(this)
         binding.directionButton.id -> LocateAddress(this)
+        binding.urlButton.id -> WebOpener(this)
         else -> throw IllegalArgumentException("Unsupported button")
     }
 
