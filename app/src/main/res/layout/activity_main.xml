@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/discover_eps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/discover_eps"
@@ -23,7 +23,7 @@
         android:gravity="center"
         android:text="@string/localization"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/discover_eps"
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -31,25 +31,28 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
         android:gravity="center"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="78dp">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/coordinates_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/coordenates_button" />
+            android:text="@string/coordinates_button" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/direction_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/direction_button" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/web_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -71,16 +74,18 @@
         tools:layout_editor_absoluteX="0dp">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/url_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/url_button" />
+            android:text="@string/url_button"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/google_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/google_button" />
+            android:text="@string/google_button"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
     <LinearLayout
@@ -101,7 +106,7 @@
             android:text="@string/telephone_contact" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/call_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/call_button" />
@@ -109,12 +114,16 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/contacts_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="@string/contacts_buttons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        tools:layout_editor_absoluteX="153dp" />
+        app:layout_constraintVertical_bias="0.019" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

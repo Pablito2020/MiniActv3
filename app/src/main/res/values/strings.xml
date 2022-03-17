@@ -2,7 +2,7 @@
     <string name="app_name">intentsimplicits</string>
     <string name="discover_eps">Discover the EPS!</string>
     <string name="localization">Localization</string>
-    <string name="coordenates_button">Coordenates</string>
+    <string name="coordinates_button">Coordenates</string>
     <string name="direction_button">Direction</string>
     <string name="accessing_web">Entering the web</string>
     <string name="url_button">url option</string>
