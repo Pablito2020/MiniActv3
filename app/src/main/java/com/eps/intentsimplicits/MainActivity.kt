@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.coordinatesButton.setOnClickListener(this)
         binding.directionButton.setOnClickListener(this)
         binding.urlButton.setOnClickListener(this)
+        binding.googleButton.setOnClickListener(this)
     }
 
 
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.coordinatesButton.id -> LocateCoordinates(this)
         binding.directionButton.id -> LocateAddress(this)
         binding.urlButton.id -> WebOpener(this)
+        binding.googleButton.id -> GoogleSearcher(this)
         else -> throw IllegalArgumentException("Unsupported button")
     }
 
