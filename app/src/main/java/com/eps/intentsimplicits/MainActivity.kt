@@ -1,11 +1,25 @@
 package com.eps.intentsimplicits
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.eps.intentsimplicits.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setUpButtonComponents()
     }
+
+    fun setUpButtonComponents() {
+        binding.callButton.setOnClickListener {
+            val caller = Caller(this)
+            caller.call()
+        }
+    }
+
 }

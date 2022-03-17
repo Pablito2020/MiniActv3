@@ -10,4 +10,5 @@
     <string name="telephone_contact">Telephone of contact: 973 666 666</string>
     <string name="call_button">Call</string>
     <string name="contacts_buttons">Go to Contacts</string>
+    <string name="telephone">973666666</string>
 </resources>
