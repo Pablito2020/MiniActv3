@@ -11,4 +11,6 @@
     <string name="call_button">Call</string>
     <string name="contacts_buttons">Go to Contacts</string>
     <string name="telephone">973666666</string>
+    <string name="lat">41.60788</string>
+    <string name="lon">0.623333</string>
 </resources>

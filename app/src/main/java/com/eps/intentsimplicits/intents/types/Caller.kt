@@ -1,4 +1,4 @@
-package com.eps.intentsimplicits
+package com.eps.intentsimplicits.intents.types
 
 import android.Manifest
 import android.app.Activity
@@ -7,8 +7,10 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.requestPermissions
+import com.eps.intentsimplicits.R
+import com.eps.intentsimplicits.intents.PermissionCommand
 
-class Caller(activity: Activity) : IntentExecutioner(activity) {
+class Caller(activity: Activity) : PermissionCommand(activity) {
 
     override fun hasPermissions(): Boolean {
         return ActivityCompat.checkSelfPermission(
