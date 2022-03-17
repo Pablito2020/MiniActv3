@@ -15,7 +15,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setUpButtonOnClick()
     }
+
+    private fun setUpButtonOnClick() {
+        binding.callButton.setOnClickListener(this)
+        binding.contactsButton.setOnClickListener(this)
+        binding.coordinatesButton.setOnClickListener(this)
+        binding.directionButton.setOnClickListener(this)
+        binding.urlButton.setOnClickListener(this)
+    }
+
 
     private fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
         binding.callButton.id -> Caller(this)
