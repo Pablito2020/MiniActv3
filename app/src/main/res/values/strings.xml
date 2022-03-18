@@ -21,4 +21,8 @@
     <string name="send_sms">Send SMS</string>
     <string name="sms_body">Hi! This is a dummy sms for telling you that EPS is good i guess?</string>
     <string name="sms_number">666666666</string>
+    <string name="send_email">Send Mail</string>
+    <string name="destination_mail">pablofrailealonso@gmail.com</string>
+    <string name="mail_subject">Go to the EPS academy!</string>
+    <string name="mail_message">Going to the EPS makes me feel great, cool and vegan.</string>
 </resources>

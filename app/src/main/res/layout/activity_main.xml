@@ -157,4 +157,16 @@
         app:layout_constraintTop_toBottomOf="@+id/contacts_button"
         app:layout_constraintVertical_bias="0.055" />
 
+    <Button
+        android:id="@+id/send_email_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send_email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_sms_button"
+        app:layout_constraintVertical_bias="0.129" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
