@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.urlButton.id -> WebOpener(this)
         binding.googleButton.id -> GoogleSearcher(this)
         binding.dialButton.id -> DialPhone(callRequester, this)
+        binding.sendSmsButton.id -> SmsSender(this)
         else -> throw IllegalArgumentException("Not implemented button listener")
     }
 

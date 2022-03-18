@@ -18,4 +18,7 @@
     <string name="text_to_search">escuela politecnica superior UdL</string>
     <string name="udl_webpage">http://www.udl.cat</string>
     <string name="dial_phone">Dial</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="sms_body">Hi! This is a dummy sms for telling you that EPS is good i guess?</string>
+    <string name="sms_number">666666666</string>
 </resources>
