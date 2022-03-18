@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.directionButton.setOnClickListener(this)
         binding.urlButton.setOnClickListener(this)
         binding.googleButton.setOnClickListener(this)
+        binding.dialButton.setOnClickListener(this)
     }
 
 
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.directionButton.id -> LocateAddress(this)
         binding.urlButton.id -> WebOpener(this)
         binding.googleButton.id -> GoogleSearcher(this)
+        binding.dialButton.id -> DialPhone(callRequester, this)
         else -> throw IllegalArgumentException("Not implemented button")
     }
 
