@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpPermissionRequesters()
+        setUpOnResultIntents()
         binding.getButtons().forEach { it.setOnClickListener(this) }
         checkPermissions()
     }
@@ -29,6 +30,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun setUpPermissionRequesters() {
         callRequester = CallerPermissionRequest(this)
         contactsRequester = ContactPermissionRequest(this)
+    }
+
+    private fun setUpOnResultIntents() {
+        GalleryOpener.Initializer.setUp(this)
     }
 
     private fun checkPermissions() {
@@ -50,6 +55,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.dialButton.id -> DialPhone(callRequester, this)
         binding.sendSmsButton.id -> SmsSender(this)
         binding.sendEmailButton.id -> MailSender(this)
+        binding.openGalleryButton.id -> GalleryOpener()
         else -> throw IllegalArgumentException("Not implemented button listener")
     }
 

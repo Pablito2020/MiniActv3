@@ -25,4 +25,5 @@
     <string name="destination_mail">pablofrailealonso@gmail.com</string>
     <string name="mail_subject">Go to the EPS academy!</string>
     <string name="mail_message">Going to the EPS makes me feel great, cool and vegan.</string>
+    <string name="open_gallery">Open Gallery</string>
 </resources>
