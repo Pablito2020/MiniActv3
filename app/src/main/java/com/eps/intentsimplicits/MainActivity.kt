@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.eps.intentsimplicits.databinding.ActivityMainBinding
+import com.eps.intentsimplicits.helpers.getButtons
 import com.eps.intentsimplicits.intents.Command
 import com.eps.intentsimplicits.intents.types.*
 import com.eps.intentsimplicits.permissions.CallerPermissionRequest
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpPermissionRequesters()
-        setUpButtonOnClick()
+        binding.getButtons().forEach { it.setOnClickListener(this) }
         checkPermissions()
     }
 
@@ -39,17 +40,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         )
     }
 
-    private fun setUpButtonOnClick() {
-        binding.callButton.setOnClickListener(this)
-        binding.contactsButton.setOnClickListener(this)
-        binding.coordinatesButton.setOnClickListener(this)
-        binding.directionButton.setOnClickListener(this)
-        binding.urlButton.setOnClickListener(this)
-        binding.googleButton.setOnClickListener(this)
-        binding.dialButton.setOnClickListener(this)
-    }
-
-
     private fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
         binding.callButton.id -> Caller(callRequester, this)
         binding.contactsButton.id -> ContactsOpener(contactsRequester, this)
@@ -58,7 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.urlButton.id -> WebOpener(this)
         binding.googleButton.id -> GoogleSearcher(this)
         binding.dialButton.id -> DialPhone(callRequester, this)
-        else -> throw IllegalArgumentException("Not implemented button")
+        else -> throw IllegalArgumentException("Not implemented button listener")
     }
 
     override fun onClick(p0: View?) {
