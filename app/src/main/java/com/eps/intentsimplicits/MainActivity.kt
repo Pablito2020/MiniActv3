@@ -1,77 +1,37 @@
 package com.eps.intentsimplicits
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.eps.intentsimplicits.databinding.ActivityMainBinding
+import com.eps.intentsimplicits.factory.ActivityMainCommandFactory
+import com.eps.intentsimplicits.factory.CommandFactory
 import com.eps.intentsimplicits.helpers.getButtons
-import com.eps.intentsimplicits.intents.Command
-import com.eps.intentsimplicits.intents.types.*
-import com.eps.intentsimplicits.permissions.CallerPermissionRequest
-import com.eps.intentsimplicits.permissions.ContactPermissionRequest
-import com.eps.intentsimplicits.permissions.PermissionRequester
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var callRequester: PermissionRequester
-    private lateinit var contactsRequester: PermissionRequester
+    private lateinit var factory: CommandFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setUpPermissionRequesters()
-        setUpOnResultIntents()
+        factory = ActivityMainCommandFactory(binding, this)
         binding.getButtons().forEach { it.setOnClickListener(this) }
         checkPermissions()
     }
 
-    private fun setUpPermissionRequesters() {
-        callRequester = CallerPermissionRequest(this)
-        contactsRequester = ContactPermissionRequest(this)
-    }
-
-    private fun setUpOnResultIntents() {
-        val onResultLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if (it.resultCode == RESULT_OK) {
-                    val intent: Intent? = it.data
-                    val uri = intent?.data
-                    binding.imageGallery.setImageURI(uri)
-                }
-            }
-        GalleryOpener.Initializer.setUp(onResultLauncher)
-    }
-
     private fun checkPermissions() {
-        requestPermissions(
-            arrayOf(
-                callRequester.getRequest(),
-                contactsRequester.getRequest()
-            ), 0
-        )
-    }
-
-    private fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
-        binding.callButton.id -> Caller(callRequester, this)
-        binding.contactsButton.id -> ContactsOpener(contactsRequester, this)
-        binding.coordinatesButton.id -> LocateCoordinates(this)
-        binding.directionButton.id -> LocateAddress(this)
-        binding.urlButton.id -> WebOpener(this)
-        binding.googleButton.id -> GoogleSearcher(this)
-        binding.dialButton.id -> DialPhone(callRequester, this)
-        binding.sendSmsButton.id -> SmsSender(this)
-        binding.sendEmailButton.id -> MailSender(this)
-        binding.openGalleryButton.id -> GalleryOpener()
-        else -> throw IllegalArgumentException("Not implemented button listener")
+        val permissions =
+            factory.getPermissionRequesters().map { permission -> permission.getRequest() }
+                .toTypedArray()
+        requestPermissions(permissions, 0)
     }
 
     override fun onClick(p0: View?) {
         if (p0 != null)
-            getCommandFromButton(p0.id).execute()
+            factory.getCommandFromButton(p0.id).execute()
     }
 
 }

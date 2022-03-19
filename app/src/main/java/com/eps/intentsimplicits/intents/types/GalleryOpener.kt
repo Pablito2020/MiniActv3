@@ -4,18 +4,27 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.Intent.ACTION_PICK
 import android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.eps.intentsimplicits.intents.Command
 
-class GalleryOpener() : Command {
+class GalleryOpener : Command {
 
     object Initializer {
         lateinit var launcher: ActivityResultLauncher<Intent>
 
-        fun setUp(launcher: ActivityResultLauncher<Intent>) {
-            this.launcher = launcher
+        fun setUp(activity: ComponentActivity, imageGallery: ImageView) {
+            this.launcher =
+                activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                    if (it.resultCode == RESULT_OK) {
+                        val intent: Intent? = it.data
+                        val uri = intent?.data
+                        imageGallery.setImageURI(uri)
+                    }
+                }
+
         }
     }
 
