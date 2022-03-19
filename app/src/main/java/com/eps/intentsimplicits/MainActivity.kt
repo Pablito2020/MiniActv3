@@ -1,7 +1,9 @@
 package com.eps.intentsimplicits
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.eps.intentsimplicits.databinding.ActivityMainBinding
 import com.eps.intentsimplicits.helpers.getButtons
@@ -33,7 +35,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setUpOnResultIntents() {
-        GalleryOpener.Initializer.setUp(this)
+        val onResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == RESULT_OK) {
+                    val intent: Intent? = it.data
+                    val uri = intent?.data
+                    binding.imageGallery.setImageURI(uri)
+                }
+            }
+        GalleryOpener.Initializer.setUp(onResultLauncher)
     }
 
     private fun checkPermissions() {

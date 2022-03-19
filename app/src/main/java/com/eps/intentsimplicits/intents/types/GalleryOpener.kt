@@ -9,28 +9,19 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.eps.intentsimplicits.intents.Command
 
-class GalleryOpener : Command {
+class GalleryOpener() : Command {
 
     object Initializer {
-        private lateinit var activity: ComponentActivity
-        lateinit var onResultLauncher: ActivityResultLauncher<Intent>
+        lateinit var launcher: ActivityResultLauncher<Intent>
 
-        fun setUp(activity: ComponentActivity) {
-            this.activity = activity
-            this.onResultLauncher =
-                Initializer.activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                    if (it.resultCode == RESULT_OK) {
-                        val imageUri = it.data
-                    }
-                }
-
+        fun setUp(launcher: ActivityResultLauncher<Intent>) {
+            this.launcher = launcher
         }
-
     }
 
     override fun execute() {
         val intent = Intent(ACTION_PICK, EXTERNAL_CONTENT_URI)
-        Initializer.onResultLauncher.launch(intent)
+        Initializer.launcher.launch(intent)
     }
 
 }
