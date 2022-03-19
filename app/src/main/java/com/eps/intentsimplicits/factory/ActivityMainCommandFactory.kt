@@ -13,12 +13,10 @@ class ActivityMainCommandFactory(
     private val activity: ComponentActivity
 ) : CommandFactory {
 
-    private val callRequester: PermissionRequester
-    private val contactsRequester: PermissionRequester
+    private val callRequester = CallerPermissionRequest(activity)
+    private val contactsRequester = ContactPermissionRequest(activity)
 
     init {
-        callRequester = CallerPermissionRequest(activity)
-        contactsRequester = ContactPermissionRequest(activity)
         GalleryOpenerChooser.Initializer.setUp(activity, binding.imageGallery)
         ContactsOpenerChooser.Initializer.setUp(activity, binding.contactNameTextview)
     }
