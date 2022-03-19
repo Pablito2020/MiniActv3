@@ -10,7 +10,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.eps.intentsimplicits.intents.Command
 
-class GalleryOpener : Command {
+class GalleryOpenerChooser : Command {
 
     object Initializer {
         lateinit var launcher: ActivityResultLauncher<Intent>

@@ -7,8 +7,8 @@ import android.provider.ContactsContract
 import com.eps.intentsimplicits.intents.PermissionCommand
 import com.eps.intentsimplicits.permissions.PermissionRequester
 
-class ContactsOpener(permission: PermissionRequester, activity: Activity) :
-    PermissionCommand(permission, activity) {
+class ContactsOpener(permission: PermissionRequester, private val activity: Activity) :
+    PermissionCommand(permission) {
 
     override fun action() {
         val intent = Intent(ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI)

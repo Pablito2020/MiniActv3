@@ -7,8 +7,8 @@ import com.eps.intentsimplicits.R
 import com.eps.intentsimplicits.intents.PermissionCommand
 import com.eps.intentsimplicits.permissions.PermissionRequester
 
-class Caller(permission: PermissionRequester, activity: Activity) :
-    PermissionCommand(permission, activity) {
+class Caller(permission: PermissionRequester, private val activity: Activity) :
+    PermissionCommand(permission) {
 
     override fun action() {
         val uri = getPhoneFromActivity()

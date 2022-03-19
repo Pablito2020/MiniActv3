@@ -19,12 +19,13 @@ class ActivityMainCommandFactory(
     init {
         callRequester = CallerPermissionRequest(activity)
         contactsRequester = ContactPermissionRequest(activity)
-        GalleryOpener.Initializer.setUp(activity, binding.imageGallery)
+        GalleryOpenerChooser.Initializer.setUp(activity, binding.imageGallery)
+        ContactsOpenerChooser.Initializer.setUp(activity, binding.contactNameTextview)
     }
 
     override fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
         binding.callButton.id -> Caller(callRequester, activity)
-        binding.contactsButton.id -> ContactsOpener(contactsRequester, activity)
+        binding.contactsButton.id -> ContactsOpenerChooser(contactsRequester)
         binding.coordinatesButton.id -> LocateCoordinates(activity)
         binding.directionButton.id -> LocateAddress(activity)
         binding.urlButton.id -> WebOpener(activity)
@@ -32,7 +33,7 @@ class ActivityMainCommandFactory(
         binding.dialButton.id -> DialPhone(callRequester, activity)
         binding.sendSmsButton.id -> SmsSender(activity)
         binding.sendEmailButton.id -> MailSender(activity)
-        binding.openGalleryButton.id -> GalleryOpener()
+        binding.openGalleryButton.id -> GalleryOpenerChooser()
         else -> throw IllegalArgumentException("Not implemented button listener")
     }
 

@@ -3,7 +3,7 @@ package com.eps.intentsimplicits.intents
 import android.app.Activity
 import com.eps.intentsimplicits.permissions.PermissionRequester
 
-abstract class PermissionCommand(requester: PermissionRequester, internal val activity: Activity) :
+abstract class PermissionCommand(requester: PermissionRequester) :
     Command {
 
     protected val permissionRequester = requester
