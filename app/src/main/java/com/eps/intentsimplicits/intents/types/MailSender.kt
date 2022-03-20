@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import com.eps.intentsimplicits.R
 import com.eps.intentsimplicits.intents.Command
 
@@ -21,8 +22,12 @@ class MailSender(private val activity: Activity) : Command {
             putExtra(Intent.EXTRA_SUBJECT, subject)
             putExtra(Intent.EXTRA_TEXT, message)
         }
-        if (intent.resolveActivity(activity.packageManager) != null)
+        if (intent.resolveActivity(activity.packageManager) != null) {
             activity.startActivity(intent)
+            Toast.makeText(activity, activity.getText(R.string.oppening_mail), Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(activity, activity.getText(R.string.error_oppening_mail), Toast.LENGTH_LONG).show()
+        }
     }
 
 }

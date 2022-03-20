@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.net.Uri
+import android.widget.Toast
 import com.eps.intentsimplicits.R
 import com.eps.intentsimplicits.intents.Command
 
@@ -16,6 +17,7 @@ class LocateCoordinates(private val activity: Activity) : Command {
         val uri = getUri()
         val intent = Intent(ACTION_VIEW, uri)
         activity.startActivity(intent)
+        Toast.makeText(activity, activity.getText(R.string.oppening_maps_coordinates), Toast.LENGTH_LONG).show()
     }
 
     private fun getUri() = Uri.parse("geo: ${lat},${lon}?q=${lat},${lon}")

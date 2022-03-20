@@ -28,4 +28,15 @@
     <string name="open_gallery">Open Gallery</string>
     <string name="image_gallery_description">Image from gallery</string>
     <string name="low_api_message_contacts">You need android O or higher for this feature</string>
+    <string name="calling_action">Calling....</string>
+    <string name="openning_contacts">Openning contacts app</string>
+    <string name="openning_dial">Openning Dial App</string>
+    <string name="openning_gallery">Opening gallery</string>
+    <string name="openning_google">Openning google</string>
+    <string name="oppening_maps_address">Openning google maps with address</string>
+    <string name="oppening_maps_coordinates">Openning maps with coordenates</string>
+    <string name="oppening_mail">Openning mail</string>
+    <string name="error_oppening_mail">Error opening mail, do you have any mail app installed?</string>
+    <string name="openning_sms">Openning SMS app</string>
+    <string name="openning_web">Openning web</string>
 </resources>

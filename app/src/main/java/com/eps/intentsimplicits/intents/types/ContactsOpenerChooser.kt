@@ -16,7 +16,7 @@ import com.eps.intentsimplicits.intents.PermissionCommand
 import com.eps.intentsimplicits.permissions.PermissionRequester
 
 
-class ContactsOpenerChooser(permission: PermissionRequester) : PermissionCommand(permission) {
+class ContactsOpenerChooser(private val activity: Activity, permission: PermissionRequester) : PermissionCommand(permission) {
 
     object Initializer {
         lateinit var launcher: ActivityResultLauncher<Intent>
@@ -34,6 +34,7 @@ class ContactsOpenerChooser(permission: PermissionRequester) : PermissionCommand
                             val name = cursor.getString(nameIndex)
                             textView.text = name
                         }
+                        cursor.close()
                     } else {
                         Toast.makeText(activity, activity.getText(R.string.low_api_message_contacts), Toast.LENGTH_LONG).show()
                     }
@@ -46,6 +47,7 @@ class ContactsOpenerChooser(permission: PermissionRequester) : PermissionCommand
         val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
         intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
         Initializer.launcher.launch(intent)
+        Toast.makeText(activity, activity.getText(R.string.openning_contacts), Toast.LENGTH_LONG).show()
     }
 
 }

@@ -23,7 +23,7 @@ class ActivityMainCommandFactory(
 
     override fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
         binding.callButton.id -> Caller(callRequester, activity)
-        binding.contactsButton.id -> ContactsOpenerChooser(contactsRequester)
+        binding.contactsButton.id -> ContactsOpenerChooser(activity, contactsRequester)
         binding.coordinatesButton.id -> LocateCoordinates(activity)
         binding.directionButton.id -> LocateAddress(activity)
         binding.urlButton.id -> WebOpener(activity)
@@ -31,7 +31,7 @@ class ActivityMainCommandFactory(
         binding.dialButton.id -> DialPhone(callRequester, activity)
         binding.sendSmsButton.id -> SmsSender(activity)
         binding.sendEmailButton.id -> MailSender(activity)
-        binding.openGalleryButton.id -> GalleryOpenerChooser()
+        binding.openGalleryButton.id -> GalleryOpenerChooser(activity)
         else -> throw IllegalArgumentException("Not implemented button listener")
     }
 
