@@ -23,15 +23,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun checkPermissions() {
-        val permissions =
-            factory.getPermissionRequesters().map { permission -> permission.getRequest() }
-                .toTypedArray()
+        val permissions = factory.getPermissionRequesters()
+            .map { permission -> permission.getRequest() }
+            .toTypedArray()
         requestPermissions(permissions, 0)
     }
 
-    override fun onClick(p0: View?) {
-        if (p0 != null)
-            factory.getCommandFromButton(p0.id).execute()
+    override fun onClick(viewComponent: View?) {
+        if (viewComponent != null)
+            factory.getCommandFromButton(viewComponent.id).execute()
     }
 
 }
