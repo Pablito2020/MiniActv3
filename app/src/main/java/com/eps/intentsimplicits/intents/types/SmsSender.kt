@@ -15,7 +15,7 @@ class SmsSender(private val activity: Activity): Command {
         val it = Intent(Intent.ACTION_SENDTO, uri);
         it.putExtra("sms_body", activity.getText(R.string.sms_body));
         activity.startActivity(it);
-        Toast.makeText(activity, activity.getText(R.string.openning_sms), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_sms), Toast.LENGTH_LONG).show()
     }
 
 }

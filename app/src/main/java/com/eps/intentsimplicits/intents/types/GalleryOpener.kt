@@ -15,7 +15,7 @@ class GalleryOpener(private val activity: Activity): Command {
         // If we want to open it on another "tab"
         //images.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intent)
-        Toast.makeText(activity, activity.getText(R.string.openning_gallery), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_gallery), Toast.LENGTH_LONG).show()
     }
 
 }

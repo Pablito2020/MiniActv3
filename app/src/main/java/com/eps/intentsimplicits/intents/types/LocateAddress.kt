@@ -16,7 +16,7 @@ class LocateAddress(private val activity: Activity) : Command {
         val uri = Uri.parse("geo:0,0?q=$address")
         val intent = Intent(ACTION_VIEW, uri)
         activity.startActivity(intent)
-        Toast.makeText(activity, activity.getText(R.string.oppening_maps_address), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_maps_address), Toast.LENGTH_LONG).show()
     }
 
 

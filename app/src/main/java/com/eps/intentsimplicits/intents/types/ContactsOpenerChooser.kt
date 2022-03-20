@@ -47,7 +47,7 @@ class ContactsOpenerChooser(private val activity: Activity, permission: Permissi
         val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
         intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
         Initializer.launcher.launch(intent)
-        Toast.makeText(activity, activity.getText(R.string.openning_contacts), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_contacts), Toast.LENGTH_LONG).show()
     }
 
 }

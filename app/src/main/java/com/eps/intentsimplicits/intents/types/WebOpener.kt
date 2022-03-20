@@ -14,6 +14,6 @@ class WebOpener(private val activity: Activity) : Command {
     override fun execute() {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         activity.startActivity(intent)
-        Toast.makeText(activity, activity.getText(R.string.openning_web), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_web), Toast.LENGTH_LONG).show()
     }
 }

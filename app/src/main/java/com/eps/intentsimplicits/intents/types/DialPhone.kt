@@ -14,7 +14,7 @@ class DialPhone(permission: PermissionRequester, private val activity: Activity)
             val uri = getPhoneFromActivity()
             val intent = Intent(Intent.ACTION_DIAL, uri)
             activity.startActivity(intent)
-            Toast.makeText(activity, activity.getText(R.string.openning_dial), Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, activity.getText(R.string.opening_dial), Toast.LENGTH_LONG).show()
         }
 
         private fun getPhoneFromActivity(): Uri {

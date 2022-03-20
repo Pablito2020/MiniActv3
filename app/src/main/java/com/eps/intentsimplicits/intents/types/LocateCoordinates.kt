@@ -17,7 +17,7 @@ class LocateCoordinates(private val activity: Activity) : Command {
         val uri = getUri()
         val intent = Intent(ACTION_VIEW, uri)
         activity.startActivity(intent)
-        Toast.makeText(activity, activity.getText(R.string.oppening_maps_coordinates), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_maps_coordinates), Toast.LENGTH_LONG).show()
     }
 
     private fun getUri() = Uri.parse("geo: ${lat},${lon}?q=${lat},${lon}")

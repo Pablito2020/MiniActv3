@@ -17,7 +17,7 @@ class GoogleSearcher(private val activity: Activity): Command {
         val intent = Intent(ACTION_WEB_SEARCH)
         intent.putExtra(SearchManager.QUERY, textToSearch)
         activity.startActivity(intent)
-        Toast.makeText(activity, activity.getText(R.string.openning_google), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_google), Toast.LENGTH_LONG).show()
     }
 
 }

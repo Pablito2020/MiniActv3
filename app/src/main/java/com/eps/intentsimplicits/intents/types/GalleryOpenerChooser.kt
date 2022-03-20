@@ -34,7 +34,7 @@ class GalleryOpenerChooser(private val activity: Activity) : Command {
     override fun execute() {
         val intent = Intent(ACTION_PICK, EXTERNAL_CONTENT_URI)
         Initializer.launcher.launch(intent)
-        Toast.makeText(activity, activity.getText(R.string.openning_gallery), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_gallery), Toast.LENGTH_LONG).show()
     }
 
 }

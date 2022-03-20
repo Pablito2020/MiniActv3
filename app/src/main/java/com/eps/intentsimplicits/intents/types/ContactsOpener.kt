@@ -15,7 +15,7 @@ class ContactsOpener(permission: PermissionRequester, private val activity: Acti
     override fun action() {
         val intent = Intent(ACTION_VIEW, ContactsContract.Contacts.CONTENT_URI)
         activity.startActivity(intent)
-        Toast.makeText(activity, activity.getText(R.string.openning_contacts), Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, activity.getText(R.string.opening_contacts), Toast.LENGTH_LONG).show()
     }
 
 }

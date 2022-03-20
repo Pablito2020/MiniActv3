@@ -24,9 +24,9 @@ class MailSender(private val activity: Activity) : Command {
         }
         if (intent.resolveActivity(activity.packageManager) != null) {
             activity.startActivity(intent)
-            Toast.makeText(activity, activity.getText(R.string.oppening_mail), Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, activity.getText(R.string.opening_mail), Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(activity, activity.getText(R.string.error_oppening_mail), Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, activity.getText(R.string.error_opening_mail), Toast.LENGTH_LONG).show()
         }
     }
 
