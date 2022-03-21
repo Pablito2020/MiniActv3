@@ -19,6 +19,7 @@ class ActivityMainCommandFactory(
     init {
         GalleryOpenerChooser.Initializer.setUp(activity, binding.imageGallery)
         ContactsOpenerChooser.Initializer.setUp(activity, binding.contactNameTextview)
+        ExtraActivityPickOpener.Initializer.setUp(activity, binding.resultExtraActivity)
     }
 
     override fun getCommandFromButton(buttonId: Int): Command = when (buttonId) {
@@ -32,6 +33,7 @@ class ActivityMainCommandFactory(
         binding.sendSmsButton.id -> SmsSender(activity)
         binding.sendEmailButton.id -> MailSender(activity)
         binding.openGalleryButton.id -> GalleryOpenerChooser(activity)
+        binding.extraActivityButton.id -> ExtraActivityPickOpener()
         else -> throw IllegalArgumentException("Not implemented button listener")
     }
 

@@ -39,4 +39,5 @@
     <string name="opening_sms">Opening SMS app</string>
     <string name="opening_web">Opening web</string>
     <string name="didnt_select_contact">Didn\'t select any contact!</string>
+    <string name="goto_extra_activity">Goto Extra Activity</string>
 </resources>
