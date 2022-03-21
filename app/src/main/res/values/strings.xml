@@ -27,7 +27,6 @@
     <string name="mail_message">Going to the EPS makes me feel great, cool and vegan.</string>
     <string name="open_gallery">Open Gallery</string>
     <string name="image_gallery_description">Image from gallery</string>
-    <string name="low_api_message_contacts">You need android O or higher for this feature</string>
     <string name="calling_action">Calling....</string>
     <string name="opening_contacts">Opening contacts app</string>
     <string name="opening_dial">Opening Dial App</string>
@@ -39,4 +38,5 @@
     <string name="error_opening_mail">Error opening mail, do you have any mail app installed?</string>
     <string name="opening_sms">Opening SMS app</string>
     <string name="opening_web">Opening web</string>
+    <string name="didnt_select_contact">Didn\'t select any contact!</string>
 </resources>

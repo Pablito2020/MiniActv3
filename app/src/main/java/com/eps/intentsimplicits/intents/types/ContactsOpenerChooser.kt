@@ -1,10 +1,8 @@
 package com.eps.intentsimplicits.intents.types
 
 import android.app.Activity
-import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
-import android.os.Build
 import android.provider.ContactsContract
 import android.widget.TextView
 import android.widget.Toast
@@ -16,38 +14,39 @@ import com.eps.intentsimplicits.intents.PermissionCommand
 import com.eps.intentsimplicits.permissions.PermissionRequester
 
 
-class ContactsOpenerChooser(private val activity: Activity, permission: PermissionRequester) : PermissionCommand(permission) {
+class ContactsOpenerChooser(private val activity: Activity, permission: PermissionRequester) :
+    PermissionCommand(permission) {
 
     object Initializer {
-        lateinit var launcher: ActivityResultLauncher<Intent>
+        lateinit var launcher: ActivityResultLauncher<Void>
 
         fun setUp(activity: ComponentActivity, textView: TextView) {
             this.launcher =
-                activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                    if (it.resultCode == Activity.RESULT_OK && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        val intent: Intent? = it.data
-                        val uri: Uri = intent?.data!!
-                        val cursor: Cursor? = activity.contentResolver.query(uri, null, null, null)
-                        if (cursor!!.moveToFirst()) {
-                            val nameIndex: Int =
-                                cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
-                            val name = cursor.getString(nameIndex)
-                            textView.text = name
-                        }
-                        cursor.close()
-                    } else {
-                        Toast.makeText(activity, activity.getText(R.string.low_api_message_contacts), Toast.LENGTH_LONG).show()
-                    }
+                activity.registerForActivityResult(ActivityResultContracts.PickContact()) {
+                    if (it == null)
+                        showNotSelectedContact(activity)
+                    else
+                        printContactName(activity, it, textView)
                 }
         }
 
+        private fun showNotSelectedContact(activity: Activity) =
+            Toast.makeText(activity, R.string.didnt_select_contact, Toast.LENGTH_LONG).show()
+
+        private fun printContactName(activity: Activity, uri: Uri, textView: TextView) {
+            val cursor: Cursor? = activity.contentResolver.query(uri, null, null, null, null, null)
+            if (cursor?.moveToFirst()!!) {
+                val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
+                textView.text = cursor.getString(nameIndex)
+            }
+            cursor.close()
+        }
     }
 
     override fun action() {
-        val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
-        intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
-        Initializer.launcher.launch(intent)
-        Toast.makeText(activity, activity.getText(R.string.opening_contacts), Toast.LENGTH_LONG).show()
+        Initializer.launcher.launch(null)
+        Toast.makeText(activity, activity.getText(R.string.opening_contacts), Toast.LENGTH_LONG)
+            .show()
     }
 
 }
